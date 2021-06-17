@@ -26,16 +26,19 @@ int main(void)
 	// computation
 	for(int i = 0; i < v_size; ++i)
 	{
-		printf("[i:%d] ", i);
+		printf("\nLoop i: %d\n ", i);
 		for(int j = 0; j < v_size; ++j){    
 			output[v_size*i+j] = 0;
 			printf("[j:%d]: output[%d]\n", j, v_size*i+j);
 			for(int k = 0; k < v_size; ++k){
 				output[v_size*i+j] += mat[v_size*i+k] * input[v_size*k + j];
-				printf("[k:%d]: %d\n", k, output[v_size*i+j]);
+				printf("\t[k:%d]: output[%d]=%d\n", k,v_size*i+j, output[v_size*i+j]);
 			}
 		}
 	}
+
+	printf("==Computation finished!==\n");
+
 	// FPGA offloading
 	// memory load
 	FPGA dev(0x40000000, 0x43c00000);
