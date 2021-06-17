@@ -38,7 +38,7 @@ const float* __attribute__((optimize("O0"))) FPGA::run()
 {
     printf("running...\n");
     *api_ = 0x5555;
-    printf("check api: %d,\t%x\n", &api_, api_);
+    printf("check api: %p,\t%x\t%x\n", (void *) api_, &api_, api_);
     while(*api_ == 0x5555);
     printf("api: %h\ndata: %f\n", &api_, &data_);
     return data_;    
