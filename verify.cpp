@@ -32,7 +32,7 @@ int main(void)
 			printf("[j:%d]: output[%d]\n", j, v_size*i+j);
 			for(int k = 0; k < v_size; ++k){
 				output[v_size*i+j] += mat[v_size*i+k] * input[v_size*k + j];
-				printf("\t[k:%d]: Add %d, output[%d]=%d\n", k, mat[v_size*i+k] * input[v_size*k + j], v_size*i+j, output[v_size*i+j]);
+				// printf("\t[k:%d]: Add %d, output[%d]=%d\n", k, mat[v_size*i+k] * input[v_size*k + j], v_size*i+j, output[v_size*i+j]);
 			}
 		}
 	}
@@ -42,7 +42,10 @@ int main(void)
 	// FPGA offloading
 	// memory load
 	FPGA dev(0x40000000, 0x43c00000);
+
+	printf("===Large MM start===\n\n");
 	dev.largeMM(mat, input, output_fpga, v_size, v_size, v_size);
+	printf("===Large MM Complete!===\n");
 
 	// display
 	printf("%-10s%-10s%-10s\n", "index", "CPU", "FPGA");
