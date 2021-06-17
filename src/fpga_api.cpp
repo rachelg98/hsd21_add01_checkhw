@@ -36,16 +36,16 @@ float* FPGA::matrix_M2(void)
 
 const float* __attribute__((optimize("O0"))) FPGA::run()
 {
-    printf("running...\n");
+    // printf("running...\n");
     // printf("*api: %x\n", *api_);
-    printf("data: %p\t%p\n", *data_, (void *) &data_);
-    printf("%p\n", (void *) &api_);
+    // printf("data: %p\t%p\n", *data_, (void *) &data_);
+    // printf("%p\n", (void *) &api_);
 
     *api_ = 0x5555;
 
-    printf("check api: %p,\t%x\t%p\n", (void *) api_, &api_,(void *) &api_);
+    // printf("check api: %p,\t%x\t%p\n", (void *) api_, &api_,(void *) &api_);
     while(*api_ == 0x5555);
-    printf("api: %h\ndata: %f\n", &api_, &data_);
+    // printf("api: %h\ndata: %f\n", &api_, &data_);
     return data_;    
 }
 
