@@ -64,18 +64,22 @@ void FPGA::largeMM(const float* weight_mat, const float* input_mat, float* outpu
 
         // 1) Assign a m1
         // Implement This
+        printf("\nAssigning m1 for %d, %d, %d\n", i, j, k);
         memset(m1, 0, SIZE * SIZE * sizeof(float));
 
         for(int m=0; m<block_row; m++){ 
+          printf("memcpy %d\n", m);
           memcpy(m1 + m*SIZE, weight_mat + (i+m)*num_input + j, block_col_1 * sizeof(float));
         }
 
         // 2) Assign a m2
         // IMPLEMENT THIS
 	
+        printf("\nAssigning m2 for %d, %d, %d\n", i, j, k);
         memset(m2, 0, SIZE * SIZE *sizeof(float));
 
         for(int n=0; n<block_col_1; n++){
+          printf("memcpy %d\n", n);
           memcpy(m2 + n*SIZE, input_mat + (j+n)*num_matrix2 + k, block_col_2 * sizeof(float));
         }
 
