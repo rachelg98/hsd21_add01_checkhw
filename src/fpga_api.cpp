@@ -64,10 +64,20 @@ void FPGA::largeMM(const float* weight_mat, const float* input_mat, float* outpu
 
         // 1) Assign a m1
         // Implement This
+        memset(m1, 0, SIZE * SIZE * sizeof(float));
+
+        for(int m=0; m<block_row; m++){ 
+          memcpy(m1 + m*SIZE, weight_mat + (i+m)*num_input + j, block_col_1 * sizeof(float));
+        }
 
         // 2) Assign a m2
-        // Implement This
+        // IMPLEMENT THIS
+	
+        memset(m2, 0, SIZE * SIZE *sizeof(float));
 
+        for(int n=0; n<block_col_1; n++){
+          memcpy(m2 + n*SIZE, input_mat + (j+n)*num_matrix2 + k, block_col_2 * sizeof(float));
+        }
 
 		// 3) Call a function `blockMM() to execute Matrix matrix multiplication
 		const float* rst = this->run();
