@@ -84,10 +84,14 @@ void FPGA::largeMM(const float* weight_mat, const float* input_mat, float* outpu
         }
 
 		// 3) Call a function `blockMM() to execute Matrix matrix multiplication
+    printf("Calling function blockMM\n");
+
 		const float* rst = this->run();
 
     // 4) Accumulate intermediate results
     // It is slightly different from the code for the project.
+        printf("Accumulating\n");
+
 		for(int n = 0; n<block_row; ++n)
         {
           for(int m = 0; m<block_col_2; ++m)
@@ -96,6 +100,8 @@ void FPGA::largeMM(const float* weight_mat, const float* input_mat, float* outpu
           }
         }
 		// 4) Accumulate intermediate results
+        printf("\tk: %d finished\n", k);
+
  	  } 
 	}
   }
