@@ -26,13 +26,13 @@ int main(void)
 	// computation
 	for(int i = 0; i < v_size; ++i)
 	{
-		printf("\nLoop i: %d\n ", i);
+		printf("Loop i: %d\n ", i);
 		for(int j = 0; j < v_size; ++j){    
 			output[v_size*i+j] = 0;
-			printf("[j:%d]: output[%d]\n", j, v_size*i+j);
+			printf("\t[j:%d]: output[%d]\n", j, v_size*i+j);
 			for(int k = 0; k < v_size; ++k){
 				output[v_size*i+j] += mat[v_size*i+k] * input[v_size*k + j];
-				// printf("\t[k:%d]: Add %d, output[%d]=%d\n", k, mat[v_size*i+k] * input[v_size*k + j], v_size*i+j, output[v_size*i+j]);
+				printf("\t[k:%d]: Add %d, output[%d]=%d\n", k, mat[v_size*i+k] * input[v_size*k + j], v_size*i+j, output[v_size*i+j]);
 			}
 		}
 	}
