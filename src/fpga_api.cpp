@@ -54,11 +54,15 @@ const float* __attribute__((optimize("O0"))) FPGA::run()
 void FPGA::largeMM(const float* weight_mat, const float* input_mat, float* output, 
 							int num_input, int num_output, int num_matrix2)
 {
+  printf("\n===largeMM function start===\n");
 	float* m1 = this->matrix_M1();
 	float* m2 = this->matrix_M2();
+
+  printf("initializing output...\n");
 	for(int i = 0; i < num_output*num_matrix2; ++i)
     output[i] = 0;
 
+  printf("Assigning matrices...\n");
   for(int i = 0; i < num_output; i += SIZE)
   {
     for(int j = 0; j < num_input; j += SIZE)
@@ -72,22 +76,22 @@ void FPGA::largeMM(const float* weight_mat, const float* input_mat, float* outpu
 
         // 1) Assign a m1
         // Implement This
-        printf("\nAssigning m1 for %d, %d, %d\n", i, j, k);
+        printf("\tAssigning m1 for %d, %d, %d\n", i, j, k);
         memset(m1, 0, SIZE * SIZE * sizeof(float));
 
         for(int m=0; m<block_row; m++){ 
-          printf("memcpy %d\n", m);
+          printf("\tmemcpy %d\n", m);
           memcpy(m1 + m*SIZE, weight_mat + (i+m)*num_input + j, block_col_1 * sizeof(float));
         }
 
         // 2) Assign a m2
         // IMPLEMENT THIS
 	
-        printf("\nAssigning m2 for %d, %d, %d\n", i, j, k);
+        printf("\n\tAssigning m2 for %d, %d, %d\n", i, j, k);
         memset(m2, 0, SIZE * SIZE *sizeof(float));
 
         for(int n=0; n<block_col_1; n++){
-          printf("memcpy %d\n", n);
+          printf("\tmemcpy %d\n", n);
           memcpy(m2 + n*SIZE, input_mat + (j+n)*num_matrix2 + k, block_col_2 * sizeof(float));
         }
 
