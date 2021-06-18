@@ -48,9 +48,9 @@ int main(void)
 	// memory load
 	FPGA dev(0x40000000, 0x43c00000);
 
-	// printf("===Large MM start===\n\n");
-	// dev.largeMM(mat, input, output_fpga, v_size, v_size, v_size);
-	// printf("===Large MM Complete!===\n");
+	printf("===Large MM start===\n\n");
+	dev.largeMM(mat, input, output_fpga, v_size, v_size, v_size);
+	printf("===Large MM Complete!===\n");
 
 	// display
 	printf("%-10s%-10s%-10s\n", "index", "CPU", "FPGA");
