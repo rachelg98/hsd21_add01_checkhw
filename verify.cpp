@@ -32,7 +32,12 @@ int main(void)
 			printf("\t[j:%d]: output[%d]\n", j, v_size*i+j);
 			for(int k = 0; k < v_size; ++k){
 				output[v_size*i+j] += mat[v_size*i+k] * input[v_size*k + j];
-				printf("\t[k:%d]: Add %d, output[%d]=%d\n", k, mat[v_size*i+k] * input[v_size*k + j], v_size*i+j, output[v_size*i+j]);
+				printf("\t[k:%d]: Add %f,\toutput[%d]=%f\n", 
+								k, 
+								mat[v_size*i+k] * input[v_size*k + j], 
+								v_size*i+j, 
+								output[v_size*i+j]
+								);
 			}
 		}
 	}
